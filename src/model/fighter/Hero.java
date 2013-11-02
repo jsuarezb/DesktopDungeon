@@ -4,9 +4,9 @@ import model.board.Content;
 
 public class Hero extends Fighter {
 
-	private int sword;
-	private int experience;
-	private static final int MAXLEVEL = 10;
+	protected int sword;
+	protected int experience;
+	protected static final int MAXLEVEL = 10;
 	
 	public Hero(){
 		this(1);
