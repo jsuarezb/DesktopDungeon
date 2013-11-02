@@ -14,6 +14,7 @@ import model.element.Shield;
 import model.element.StrengthBonus;
 import model.element.Sword;
 import model.element.Wall;
+import model.fighter.ArmoredHero;
 import model.fighter.Fighter;
 import model.fighter.Goblin;
 import model.fighter.Golem;
@@ -43,6 +44,7 @@ public class ImageManager {
 			images.put(Snake.class.getName(), ImageUtils.loadImage("resources/Serpent.png"));
 			images.put(Sword.class.getName(), ImageUtils.loadImage("resources/sword.png"));
 			images.put(Wall.class.getName(), ImageUtils.loadImage("resources/wall.png"));
+			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
 		}
 		catch(Exception e){

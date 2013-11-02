@@ -18,7 +18,7 @@ public class Hero extends Fighter {
 	
 	public void addExperience(int value) {
 		experience += value;
-		if( getExperience() >= getMaxExperience() && hasMaxLevel() ){
+		if( getExperience() >= getMaxExperience() && !hasMaxLevel() ){
 			levelUp();
 			experience = 0;
 			strength = getMaxStrength();
@@ -52,7 +52,7 @@ public class Hero extends Fighter {
 	}
 	
 	public boolean hasMaxLevel(){
-		return getLevel() != getMaxLevel();
+		return getLevel() == getMaxLevel();
 	}
 	
 	private int getMaxLevel() {
