@@ -6,6 +6,6 @@ public class ArmoredHero extends Hero{
 	
 	@Override
 	public void injured(int value){
-		health -= Math.round(value*SHIELD);
+		health -= Math.round(value * SHIELD);
 	}
 }

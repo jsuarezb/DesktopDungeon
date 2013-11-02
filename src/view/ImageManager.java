@@ -56,7 +56,7 @@ public class ImageManager {
 			if (content instanceof Fighter) {
 				Fighter fighter = (Fighter) content;
 				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(fighter.getClass().getName()));
-				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel().getValue()), Color.YELLOW);
+				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel()), Color.YELLOW);
 			} else {
 				return ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(cell.getContent().getClass().getName()));
 			}
