@@ -18,16 +18,13 @@ public abstract class Enemy extends Fighter {
 		return false;
 	}
 	
-	
-
 	@Override
 	public Content interact(Fighter hero) {
 		hero.injured( strength );
 		if( hero.isAlive() ){
-			this.injured( hero.getStrength() );
-			if ( this.isAlive() ){
+			hero.interact(this);
+			if ( this.isAlive() )
 				return null;
-			}
 			else
 			{
 				return drop();
