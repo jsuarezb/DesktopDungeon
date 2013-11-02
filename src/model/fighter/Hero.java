@@ -15,7 +15,7 @@ public class Hero extends Fighter {
 	}
 	
 	public void addExperience(int value) {
-		experience += value;	
+		experience += value;
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class Hero extends Fighter {
 	}
 	
 	public boolean hasMaxLevel(){
-		return false;
+		return true;
 	}
 	
 	public int getMaxHealth(){
