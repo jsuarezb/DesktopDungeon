@@ -8,13 +8,14 @@ public class Hero extends Fighter {
 
 	private int sword;
 	private int shield;
+	private int experience;
 	
 	public Hero() {
 		level = new HeroLevel(1, 10);
 	}
 	
 	public void addExperience(int value) {
-		
+		experience += value;	
 	}
 	
 	@Override
