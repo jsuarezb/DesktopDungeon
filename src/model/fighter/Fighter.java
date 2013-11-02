@@ -1,14 +1,22 @@
 package model.fighter;
 
 import model.board.Content;
-import model.fighter.level.Level;
 
 public abstract class Fighter implements Content {
 	
 	protected int health;
 	protected int strength;
-	protected Level level;
+	protected int level;
 
+	public Fighter(){
+	}
+	
+	public Fighter( int level ){
+		this.level = level;
+		health = getMaxHealth();
+		strength = getMaxStrength();
+	}
+	
 	public boolean isAlive(){
 		return health > 0;
 	}
@@ -36,9 +44,14 @@ public abstract class Fighter implements Content {
 		return health;
 	}
 	
+	public int getLevel(){
+		return level;
+	}
+	
 	public abstract boolean hasMaxLevel();
 	
 	public abstract int getMaxHealth();
 	
-	public abstract Level getLevel();
+	public abstract int getMaxStrength();
+	
 }
