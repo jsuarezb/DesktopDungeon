@@ -77,6 +77,7 @@ public class Hero extends Fighter {
         }
         
         public void swordify(int value){
+                strength -= sword;
                 sword = value;
                 strength += value;
         }
