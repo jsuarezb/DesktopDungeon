@@ -63,7 +63,7 @@ public class InfoPanel extends JPanel implements GamePanelListener {
 			enemyPanel.setVisible(true);
 			enemyPanel.setFighter((Fighter)content);
 			elementPanel.setVisible(false);
-		} else if (content != null) {
+		} else if (content != null && content instanceof Item ) {
 			enemyPanel.setVisible(false);
 			elementPanel.setContent(content);
 			elementPanel.setVisible(true);
