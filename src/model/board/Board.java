@@ -51,7 +51,7 @@ public abstract class Board {
 				if (i>=0 && i<SIZE && j>=0 && j<SIZE) {
 					if (g[i][j].hasFog()) {
 						g[i][j].removeFog();
-						getHero().heal(getHero().getLevel().getValue());
+						getHero().heal(getHero().getLevel());
 					}
 				}
 			}
