@@ -1,8 +1,8 @@
 package model.element;
 
 import model.board.Content;
+import model.fighter.ArmoredHero;
 import model.fighter.Fighter;
-import model.fighter.Hero;
 
 public class Shield extends ValuableItem{
 	
@@ -12,7 +12,7 @@ public class Shield extends ValuableItem{
 	
 	@Override
 	public Content interact(Fighter hero){
-		((Hero)hero).shieldify(getValue());
-		return null;
+		ArmoredHero armoredHero = (ArmoredHero)hero;
+		return armoredHero;
 	}
 }
