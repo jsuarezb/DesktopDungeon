@@ -1,14 +1,14 @@
 package model.fighter;
 
 import model.board.Content;
-import model.fighter.level.Level;
 
 public abstract class Enemy extends Fighter {
 	
 	protected double F;
 	protected double S;
 	
-	public Enemy(double S, double F){
+	public Enemy(double S, double F, int level){
+		super( level );
 		this.F = F;
 		this.S = S;
 	}
@@ -17,7 +17,7 @@ public abstract class Enemy extends Fighter {
 	public boolean canWalkOver() {
 		return false;
 	}
-	
+
 	@Override
 	public Content interact(Fighter hero) {
 		hero.injured( strength );
@@ -27,17 +27,12 @@ public abstract class Enemy extends Fighter {
 				return null;
 			else
 			{
-				((Hero)hero).addExperience(getLevel().getValue()); /** TODO: getLevel devuelve int **/
+				((Hero)hero).addExperience(getLevel()); 
 				return drop();
 			}
 		}
 		else
-			return null;
-	}
-
-	@Override
-	public Level getLevel() { /** TODO: getLevel devuelve int **/
-		return level; 
+			return null; //GAME OVER
 	}
 	
 	public boolean hasMaxLevel() {
@@ -46,14 +41,12 @@ public abstract class Enemy extends Fighter {
 	
 	@Override
 	public int getMaxHealth() {
-		return (int) Math.floor(((level.getValue() + 3)^2 - 10)*S);
+		return (int) Math.floor(((getLevel() + 3)^2 - 10)*S);
 	}
 	
-	@Override
-	public int getStrength() {
-		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5*F);
+	public int getMaxStrength() {
+		return (int) Math.floor((getLevel()^2 + 5*getLevel())*0.5*F);
 	}
 	
 	public abstract Content drop();	
-	
 }

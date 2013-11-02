@@ -50,7 +50,7 @@ public class FighterPanel extends JPanel {
 		g.drawImage(imgManager.get(fighter.getClass().getName()), 10, 5, null);
 		g.drawString("Health: ", 10, 60);
 		g.drawString("Strengh: " + fighter.getStrength(), 10, 80);
-		g.drawString("Level: " + fighter.getLevel().getValue(), 10, 100);
+		g.drawString("Level: " + fighter.getLevel(), 10, 100);
 		
 	}
 	
