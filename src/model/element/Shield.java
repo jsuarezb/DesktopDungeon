@@ -4,7 +4,7 @@ import model.board.Content;
 import model.fighter.Fighter;
 import model.fighter.Hero;
 
-public class Shield extends Item{
+public class Shield extends ValuableItem{
 	
 	public Shield(int value){
 		super(value);
