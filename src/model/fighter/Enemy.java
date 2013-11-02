@@ -8,9 +8,9 @@ public abstract class Enemy extends Fighter {
 	protected double S;
 	
 	public Enemy(double S, double F, int level){
-		super( level );
 		this.F = F;
 		this.S = S;
+		initialize( level );	
 	}
 	
 	@Override
@@ -41,11 +41,11 @@ public abstract class Enemy extends Fighter {
 	
 	@Override
 	public int getMaxHealth() {
-		return (int) Math.floor(((getLevel() + 3)^2 - 10)*S);
+		return (int) Math.floor((Math.pow((getLevel() + 3), 2) - 10)*S);
 	}
 	
 	public int getMaxStrength() {
-		return (int) Math.floor((getLevel()^2 + 5*getLevel())*0.5*F);
+		return (int) Math.floor((Math.pow(getLevel(), 2) + 5*getLevel())*0.5*F);
 	}
 	
 	public abstract Content drop();	
