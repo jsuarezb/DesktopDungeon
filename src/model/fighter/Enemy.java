@@ -27,8 +27,8 @@ public abstract class Enemy extends Fighter {
 				return null;
 			else
 			{
-				return drop();
 				((Hero)hero).addExperience(getLevel().getValue()); /** TODO: getLevel devuelve int **/
+				return drop();
 			}
 		}
 		else
