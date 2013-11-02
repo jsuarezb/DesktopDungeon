@@ -23,16 +23,12 @@ public abstract class Enemy extends Fighter {
 		hero.injured(getMaxStrength());
 		if( hero.isAlive() ){
 			hero.interact(this);
-			if ( this.isAlive() )
-				return this;
-			else
-			{
+			if ( !this.isAlive() ){
 				((Hero)hero).addExperience(getLevel()); 
 				return drop();
 			}
 		}
-		else
-			return null; //GAME OVER
+		return this; //GAME OVER
 	}
 	
 	public boolean hasMaxLevel() {
