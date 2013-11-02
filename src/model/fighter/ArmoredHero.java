@@ -2,7 +2,7 @@ package model.fighter;
 
 public class ArmoredHero extends Hero{
 	
-	private static final double SHIELD = 0.3;
+	private static final double SHIELD = 0.7;
 	
 	public ArmoredHero( Hero hero ){
 		this.health = hero.health;
@@ -17,3 +17,4 @@ public class ArmoredHero extends Hero{
 		health -= Math.round(value * SHIELD);
 	}
 }
+
