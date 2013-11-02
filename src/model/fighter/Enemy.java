@@ -32,7 +32,7 @@ public abstract class Enemy extends Fighter {
 			}
 		}
 		else
-			return new GameOver();
+			return null;
 	}
 
 	@Override

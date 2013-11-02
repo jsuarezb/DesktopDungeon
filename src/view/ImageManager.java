@@ -40,7 +40,7 @@ public class ImageManager {
 			images.put(Golem.class.getName(), ImageUtils.loadImage("resources/golem.png"));
 			images.put(HealthBonus.class.getName(), ImageUtils.loadImage("resources/healthbonus.png"));
 			images.put(Potion.class.getName(), ImageUtils.loadImage("resources/healthPotion.png"));
-			images.put(Snake.class.getName(), ImageUtils.loadImage("resources/serpent.png"));
+			images.put(Snake.class.getName(), ImageUtils.loadImage("resources/Serpent.png"));
 			images.put(Sword.class.getName(), ImageUtils.loadImage("resources/sword.png"));
 			images.put(Wall.class.getName(), ImageUtils.loadImage("resources/wall.png"));
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
