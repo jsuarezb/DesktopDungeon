@@ -24,7 +24,7 @@ public abstract class Enemy extends Fighter {
 		if( hero.isAlive() ){
 			hero.interact(this);
 			if ( this.isAlive() )
-				return null;
+				return this;
 			else
 			{
 				((Hero)hero).addExperience(getLevel()); 
