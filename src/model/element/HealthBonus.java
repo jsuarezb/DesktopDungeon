@@ -3,7 +3,7 @@ package model.element;
 import model.board.Content;
 import model.fighter.Fighter;
 
-public class HealthBonus extends Item{
+public class HealthBonus extends ValuableItem{
 	
 	public HealthBonus(int value){
 		super(value);
