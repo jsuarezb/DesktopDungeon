@@ -4,7 +4,7 @@ import model.board.Content;
 import model.fighter.Fighter;
 import model.fighter.Hero;
 
-public class StrengthBonus extends Item{
+public class StrengthBonus extends ValuableItem{
 	
 	public StrengthBonus(int value){
 		super(value);
