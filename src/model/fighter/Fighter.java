@@ -19,6 +19,9 @@ public abstract class Fighter implements Content {
 	
 	public void heal(int value){
 		health += value;
+		if( health >= getMaxHealth() ){
+			health = getMaxHealth();
+		}
 	}
 	
 	public void healFull(){
