@@ -21,7 +21,7 @@ public class Hero extends Fighter {
                 if( getExperience() >= getMaxExperience() && !hasMaxLevel() ){
                         levelUp();
                         experience = 0;
-                        strength = getMaxStrength();
+                        strength = getMaxStrength() + sword;
                         this.healFull();
                 }
         }
@@ -47,7 +47,7 @@ public class Hero extends Fighter {
         
         @Override
         public Content interact(Fighter enemy) {
-                enemy.injured( getStrength() + sword );
+                enemy.injured( getStrength());
                 return null;
         }
         
@@ -78,6 +78,7 @@ public class Hero extends Fighter {
         
         public void swordify(int value){
                 sword = value;
+                strength += value;
         }
         
 }
