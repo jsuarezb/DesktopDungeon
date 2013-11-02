@@ -1,3 +1,8 @@
+package model.fighter;
+
+import model.board.Content;
+import model.fighter.level.Level;
+
 public abstract class Fighter implements Content {
 	
 	protected int health;

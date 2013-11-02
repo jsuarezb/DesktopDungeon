@@ -2,10 +2,6 @@ package model.fighter;
 
 import model.board.Content;
 import model.element.Blood;
-package model.fighter;
-
-import model.board.Content;
-import model.element.Blood;
 
 public class Goblin extends Enemy{
 	
