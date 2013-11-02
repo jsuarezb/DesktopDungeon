@@ -5,15 +5,6 @@ import model.fighter.level.Level;
 
 public abstract class Enemy extends Fighter {
 	
-	private static double S;
-	private static double F;
-	
-	public Enemy(double s, double f){
-		super();
-		this.S = s;
-		this.F = f;
-	}
-	
 	@Override
 	public boolean canWalkOver() {
 		return false;
@@ -48,13 +39,17 @@ public abstract class Enemy extends Fighter {
 	
 	@Override
 	public int getMaxHealth() {
-		return (int) Math.floor(((level.getValue() + 3)^2 - 10)*S);
+		return (int) Math.floor(((level.getValue() + 3)^2 - 10)*getS());
 	}
 	
 	@Override
 	public int getStrength() {
-		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5*F);
+		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5*getF());
 	}
 	
 	public abstract Content drop();	
+	
+	public abstract double getS();	
+	
+	public abstract double getF();	
 }
