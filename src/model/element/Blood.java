@@ -12,7 +12,7 @@ public class Blood implements Content{
 
 	@Override
 	public Content interact(Fighter hero) {
-		return null;
+		return hero;
 	}
 	
 }

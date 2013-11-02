@@ -9,6 +9,7 @@ public class Potion extends Item{
 	@Override
 	public Content interact(Fighter hero){
 		((Hero)hero).healFull();
-		return null;
+		
+		return hero;
 	}
 }

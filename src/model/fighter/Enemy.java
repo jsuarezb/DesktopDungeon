@@ -20,7 +20,7 @@ public abstract class Enemy extends Fighter {
 
 	@Override
 	public Content interact(Fighter hero) {
-		hero.injured( strength );
+		hero.injured(getMaxStrength());
 		if( hero.isAlive() ){
 			hero.interact(this);
 			if ( this.isAlive() )

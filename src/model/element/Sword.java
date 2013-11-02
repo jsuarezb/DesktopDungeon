@@ -13,6 +13,7 @@ public class Sword extends ValuableItem{
 	@Override
 	public Content interact(Fighter hero){
 		((Hero)hero).swordify(getValue());
-		return null;
+		
+		return hero;
 	}
 }

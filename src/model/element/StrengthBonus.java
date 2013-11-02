@@ -13,6 +13,6 @@ public class StrengthBonus extends ValuableItem{
 	@Override
 	public Content interact(Fighter hero){
 		((Hero)hero).stronger(getValue());
-		return null;
+		return hero;
 	}
 }

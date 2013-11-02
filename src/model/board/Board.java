@@ -8,7 +8,7 @@ public abstract class Board {
 	
 	public static final int SIZE = 12;
 	
-	private Cell[][] g = new Cell[SIZE][SIZE];
+	protected Cell[][] g = new Cell[SIZE][SIZE];
 	private Point heroPosition;
 	
 	public Board() {
