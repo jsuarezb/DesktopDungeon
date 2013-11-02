@@ -13,6 +13,7 @@ import model.element.Potion;
 import model.element.Shield;
 import model.element.StrengthBonus;
 import model.element.Sword;
+import model.element.Valuable;
 import model.element.Wall;
 import model.fighter.ArmoredHero;
 import model.fighter.Fighter;
@@ -31,8 +32,8 @@ public class ImageManager {
 
 	public void initImages() {
 		try{
-			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
 			images.put(Hero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
+			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
 			images.put(Cell.class.getName(), ImageUtils.loadImage("resources/floor.png"));
 			images.put(Blood.class.getName(), ImageUtils.loadImage("resources/blood.png"));
 			images.put(Shield.class.getName(), ImageUtils.loadImage("resources/armor.png"));
@@ -44,7 +45,6 @@ public class ImageManager {
 			images.put(Snake.class.getName(), ImageUtils.loadImage("resources/Serpent.png"));
 			images.put(Sword.class.getName(), ImageUtils.loadImage("resources/sword.png"));
 			images.put(Wall.class.getName(), ImageUtils.loadImage("resources/wall.png"));
-			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
 		}
 		catch(Exception e){
@@ -55,7 +55,7 @@ public class ImageManager {
 	public Image get(Cell cell) {
 		if (cell.hasContent()) {
 			Content content = cell.getContent();
-		if (content instanceof Fighter) {
+			if (content instanceof Fighter) {
 				Fighter fighter = (Fighter) content;
 				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(fighter.getClass().getName()));
 				
@@ -96,7 +96,12 @@ public class ImageManager {
 				}
 				
 				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel()), color);
-			} else {
+			} else if ( content instanceof Valuable ){
+				Valuable valuableItem = (Valuable) content;
+				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(valuableItem.getClass().getName()));
+				
+				return ImageUtils.drawString(image, String.valueOf(valuableItem.getValue()), Color.YELLOW);
+			}else{
 				return ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(cell.getContent().getClass().getName()));
 			}
 		} else {
