@@ -5,6 +5,9 @@ import model.fighter.level.HeroLevel;
 import model.fighter.level.Level;
 
 public class Hero extends Fighter {
+
+	private int sword;
+	private int shield;
 	
 	public Hero() {
 		level = new HeroLevel(1, 10);
@@ -45,5 +48,13 @@ public class Hero extends Fighter {
 	
 	public int getMaxHealth(){
 		return getLevel().getValue() * 10;
+	}
+	
+	public void swordify(int value){
+		sword = value;
+	}
+	
+	public void shieldify(int value){
+		shield = value;
 	}
 }
