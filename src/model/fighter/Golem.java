@@ -1,10 +1,17 @@
 package model.fighter;
 
+import model.board.Content;
+import model.element.Sword;
+
 public class Golem extends Enemy{
 
-	@Override
-	public int getMaxHealth() {
-		return (int) Math.floor(((level.getValue() + 3)^2 - 10)*1.35);
+	public Golem(double s, double f) {
+		super(s, f);
 	}
-
+	
+	@Override
+	public Content drop() {
+		return new Sword(getLevel().getValue());
+	}
 }
+
