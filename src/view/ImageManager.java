@@ -7,8 +7,18 @@ import java.util.Map;
 
 import model.board.Cell;
 import model.board.Content;
+import model.element.Blood;
+import model.element.HealthBonus;
+import model.element.Potion;
+import model.element.Shield;
+import model.element.StrengthBonus;
+import model.element.Sword;
+import model.element.Wall;
 import model.fighter.Fighter;
+import model.fighter.Goblin;
+import model.fighter.Golem;
 import model.fighter.Hero;
+import model.fighter.Snake;
 
 public class ImageManager {
 	
@@ -20,8 +30,19 @@ public class ImageManager {
 
 	public void initImages() {
 		try{
+			/* TODO: add armored hero sprite */
 			images.put(Hero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
 			images.put(Cell.class.getName(), ImageUtils.loadImage("resources/floor.png"));
+			images.put(Blood.class.getName(), ImageUtils.loadImage("resources/blood.png"));
+			images.put(Shield.class.getName(), ImageUtils.loadImage("resources/armor.png"));
+			images.put(StrengthBonus.class.getName(), ImageUtils.loadImage("resources/attackbonus.png"));
+			images.put(Goblin.class.getName(), ImageUtils.loadImage("resources/goblin.png"));
+			images.put(Golem.class.getName(), ImageUtils.loadImage("resources/golem.png"));
+			images.put(HealthBonus.class.getName(), ImageUtils.loadImage("resources/healthbonus.png"));
+			images.put(Potion.class.getName(), ImageUtils.loadImage("resources/healthPotion.png"));
+			images.put(Snake.class.getName(), ImageUtils.loadImage("resources/serpent.png"));
+			images.put(Sword.class.getName(), ImageUtils.loadImage("resources/sword.png"));
+			images.put(Wall.class.getName(), ImageUtils.loadImage("resources/wall.png"));
 			images.put("FOG", ImageUtils.loadImage("resources/fog.png"));
 		}
 		catch(Exception e){
