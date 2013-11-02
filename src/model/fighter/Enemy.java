@@ -1,11 +1,19 @@
 package model.fighter;
 
 import model.board.Content;
-import model.element.blood;
 import model.fighter.level.Level;
 
 public abstract class Enemy extends Fighter {
-
+	
+	private static double S;
+	private static double F;
+	
+	public Enemy(double s, double f){
+		super();
+		this.S = s;
+		this.F = f;
+	}
+	
 	@Override
 	public boolean canWalkOver() {
 		return false;
@@ -13,23 +21,40 @@ public abstract class Enemy extends Fighter {
 
 	@Override
 	public Content interact(Fighter hero) {
-		if (!this.isAlive()){
-			return new Blood;
+		hero.injured( strength );
+		if( hero.isAlive() ){
+			this.injured( hero.getStrength() );
+			if ( this.isAlive() ){
+				return null;
+			}
+			else
+			{
+				return drop();
+				((Hero)hero).addExperience(getLevel().getValue()); /** TODO: getLevel devuelve int **/
+			}
 		}
-		return null;
+		else
+			return new GameOver();
 	}
 
 	@Override
-	public abstract int getMaxHealth();
-
+	public Level getLevel() { /** TODO: getLevel devuelve int **/
+		return level; 
+	}
+	
+	public boolean hasMaxLevel() {
+		return true;
+	}
+	
 	@Override
-	public Level getLevel() {
-		return level;
+	public int getMaxHealth() {
+		return (int) Math.floor(((level.getValue() + 3)^2 - 10)*S);
 	}
 	
 	@Override
 	public int getStrength() {
-		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5);
+		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5*F);
 	}
 	
+	public abstract Content drop();	
 }
