@@ -11,7 +11,7 @@ public abstract class Fighter implements Content {
 	public Fighter(){
 	}
 	
-	public Fighter( int level ){
+	public void initialize( int level ){
 		this.level = level;
 		health = getMaxHealth();
 		strength = getMaxStrength();
