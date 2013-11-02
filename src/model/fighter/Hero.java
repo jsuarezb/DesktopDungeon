@@ -50,6 +50,10 @@ public class Hero extends Fighter {
 		return getLevel().getValue() * 10;
 	}
 	
+	public void stronger(int value){
+                strength += value;
+        }
+	
 	public void swordify(int value){
 		sword = value;
 	}
