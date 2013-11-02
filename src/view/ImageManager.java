@@ -55,10 +55,47 @@ public class ImageManager {
 	public Image get(Cell cell) {
 		if (cell.hasContent()) {
 			Content content = cell.getContent();
-			if (content instanceof Fighter) {
+		if (content instanceof Fighter) {
 				Fighter fighter = (Fighter) content;
 				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(fighter.getClass().getName()));
-				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel()), Color.YELLOW);
+				
+				Color color;
+				switch( fighter.getLevel() ){
+				case 1:
+					color = new Color( 0, 255, 0 );
+					break;
+				case 2:
+					color = new Color( 64, 255, 0 );
+					break;
+				case 3:
+					color = new Color( 128, 255, 0 );
+					break;
+				case 4:
+					color = new Color( 191, 255, 0 );
+					break;
+				case 5:
+					color = new Color( 255, 255, 0 );
+					break;
+				case 6:
+					color = new Color( 255, 255, 0 );
+					break;
+				case 7:
+					color = new Color( 255, 191, 0 );
+					break;
+				case 8:
+					color = new Color( 255, 128, 0 );
+					break;
+				case 9:
+					color = new Color( 255, 64, 0 );
+					break;
+				case 10:
+					color = new Color( 255, 0, 0 );
+					break;
+				default:
+					color = new Color( 0, 255, 0 );
+				}
+				
+				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel()), color);
 			} else {
 				return ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(cell.getContent().getClass().getName()));
 			}
