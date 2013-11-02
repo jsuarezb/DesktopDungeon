@@ -3,31 +3,37 @@ package model.fighter;
 import model.board.Content;
 import model.fighter.level.Level;
 
-public abstract Fighter extends Content {
+public abstract class Fighter implements Content {
+	
+	protected int health;
+	protected int strength;
+	protected Level level;
 
-	public boolean isAlive();
+	public boolean isAlive(){
+		return health > 0;
+	}
 	
-	public void injured(int value);
+	public void injured(int value){
+		health -= value;
+	}
 	
-	public void heal(int value);
+	public void heal(int value){
+		health += value;
+	}
 	
-	public void healFull();
+	public void healFull(){
+		health = getMaxHealth();
+	}
 
-	public int getStrength();
+	public int getStrength(){
+		return strength;
+	}
 	
-	public void stronger(int value);
+	public int getHealth(){
+		return health;
+	}
 	
-	public int getHealth();
+	public abstract int getMaxHealth();
 	
-	public int getMaxHealth();
-	
-	public Level getLevel();
-	
-	public boolean hasMaxLevel();
-	
-	public void addExperience(int value) ;
-	
-	public int getExperience();
-	
-	public int getMaxExperience();
+	public abstract Level getLevel();
 }

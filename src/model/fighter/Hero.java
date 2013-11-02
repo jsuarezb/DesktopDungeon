@@ -3,7 +3,7 @@ package model.fighter;
 import model.board.Content;
 import model.fighter.level.Level;
 
-public class Hero implements Fighter {
+public class Hero extends Fighter {
 
 	private Fighter fighter;
 	
