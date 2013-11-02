@@ -1,10 +1,17 @@
 package model.fighter;
 
+import model.board.Content;
+import model.element.Blood;
+
 public class Snake extends Enemy{
 
-	@Override
-	public int getMaxHealth() {
-		return (int) Math.floor((level.getValue() + 3)^2 - 10);
+	public Snake(double s, double f) {
+		super(s, f);
 	}
 	
+	@Override
+	public Content drop() {
+		return new Blood();
+	}
 }
+
