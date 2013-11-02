@@ -7,7 +7,6 @@ import model.fighter.level.Level;
 public class Hero extends Fighter {
 
 	private int sword;
-	private int shield;
 	private int experience;
 	
 	public Hero() {
@@ -16,6 +15,11 @@ public class Hero extends Fighter {
 	
 	public void addExperience(int value) {
 		experience += value;
+		if( getExperience() >= getMaxExperience() && hasMaxLevel() ){
+			getLevel().levelUp();
+			experience = 0;
+			this.healFull();
+		}
 	}
 	
 	@Override
@@ -25,7 +29,7 @@ public class Hero extends Fighter {
 
 
 	public int getExperience() {
-		return 0;
+		return experience;
 	}
 	
 	@Override
@@ -33,22 +37,22 @@ public class Hero extends Fighter {
 		return level;
 	}
 
-
 	public int getMaxExperience() {
-		return 0;
+		return getLevel().getValue()*5;
 	}
 	
 	@Override
-	public Content interact(Fighter hero) {
-		return this;
+	public Content interact(Fighter enemy) {
+		enemy.injured( getStrength() + sword );
+		return null;
 	}
 	
 	public boolean hasMaxLevel(){
-		return true;
+		return getLevel().getValue() != getLevel().getMaxLevel();
 	}
 	
 	public int getMaxHealth(){
-		return getLevel().getValue() * 10;
+		return getLevel().getValue()*10;
 	}
 	
 	public void stronger(int value){
@@ -57,9 +61,5 @@ public class Hero extends Fighter {
 	
 	public void swordify(int value){
 		sword = value;
-	}
-	
-	public void shieldify(int value){
-		shield = value;
 	}
 }
