@@ -1,15 +1,17 @@
 package model.fighter;
 
+import model.board.Content;
+import model.element.Blood;
+
 public class Goblin extends Enemy{
 	
-	@Override
-	public int getMaxHealth() {
-		return (int) Math.floor((level.getValue() + 3)^2 - 10);
+	public Goblin(double s, double f) {
+		super(s, f);
 	}
 	
 	@Override
-	public int getStrength() {
-		return (int) Math.floor(((level.getValue())^2 + 5*level.getValue())*0.5*0.7);
+	public Content drop() {
+		return new Blood();
 	}
-
 }
+
