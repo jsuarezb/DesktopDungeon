@@ -31,7 +31,7 @@ public class ImageManager {
 
 	public void initImages() {
 		try{
-			/* TODO: add armored hero sprite */
+			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
 			images.put(Hero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
 			images.put(Cell.class.getName(), ImageUtils.loadImage("resources/floor.png"));
 			images.put(Blood.class.getName(), ImageUtils.loadImage("resources/blood.png"));
