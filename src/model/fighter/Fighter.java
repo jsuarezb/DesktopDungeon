@@ -3,7 +3,7 @@ package model.fighter;
 import model.board.Content;
 import model.fighter.level.Level;
 
-public interface Fighter extends Content {
+public abstract Fighter extends Content {
 
 	public boolean isAlive();
 	
