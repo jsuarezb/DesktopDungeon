@@ -1,92 +1,49 @@
 package model.fighter;
 
 import model.board.Content;
+import model.fighter.level.HeroLevel;
 import model.fighter.level.Level;
 
 public class Hero extends Fighter {
-
-	private Fighter fighter;
 	
-	public Hero(Fighter fighter) {
-		this.fighter = fighter;
+	public Hero() {
+		level = new HeroLevel(1, 10);
 	}
 	
-	protected Fighter getFighter() {
-		return fighter;
-	}
-	
-	@Override
 	public void addExperience(int value) {
-		fighter.addExperience(value);
+		
 	}
 	
 	@Override
 	public boolean canWalkOver() {
-		return fighter.canWalkOver();
+		return true;
 	}
-	
-	@Override
+
+
 	public int getExperience() {
-		return fighter.getExperience();
-	}
-	
-	@Override
-	public int getHealth() {
-		return fighter.getHealth();
+		return 0;
 	}
 	
 	@Override
 	public Level getLevel() {
-		return fighter.getLevel();
+		return level;
 	}
-	
-	@Override
+
+
 	public int getMaxExperience() {
-		return fighter.getMaxExperience();
-	}
-	
-	@Override
-	public int getMaxHealth() {
-		return fighter.getMaxHealth();
-	}
-	
-	@Override
-	public int getStrength() {
-		return fighter.getStrength();
-	}
-	
-	@Override
-	public boolean hasMaxLevel() {
-		return fighter.hasMaxLevel();
-	}
-	
-	@Override
-	public void heal(int value) {
-		fighter.heal(value);
-	}
-	
-	@Override
-	public void healFull() {
-		fighter.healFull();
-	}
-	
-	@Override
-	public void injured(int value) {
-		fighter.injured(value);
+		return 0;
 	}
 	
 	@Override
 	public Content interact(Fighter hero) {
-		return fighter.interact(hero);
+		return this;
 	}
 	
-	@Override
-	public boolean isAlive() {
-		return fighter.isAlive();
+	public boolean hasMaxLevel(){
+		return false;
 	}
 	
-	@Override
-	public void stronger(int value) {
-		fighter.stronger(value);
+	public int getMaxHealth(){
+		return getLevel().getValue() * 10;
 	}
 }

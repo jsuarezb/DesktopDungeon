@@ -33,6 +33,8 @@ public abstract class Fighter implements Content {
 		return health;
 	}
 	
+	public abstract boolean hasMaxLevel();
+	
 	public abstract int getMaxHealth();
 	
 	public abstract Level getLevel();

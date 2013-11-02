@@ -24,8 +24,7 @@ public abstract class Board {
 		}
 		setContents();
 		heroPosition = getHeroInitPosition();
-		// Aqui se debe ubicar inicialmente al jugador
-		//g[heroPosition.y][heroPosition.x].setContent( ........ );
+		g[heroPosition.y][heroPosition.x].setContent(new Hero());
 		cleanFog(heroPosition);
 	}	
 
