@@ -23,6 +23,9 @@ public abstract class Fighter implements Content {
 	
 	public void injured(int value){
 		health -= value;
+		
+		if (health < 0) // Don't want negative health
+			health = 0;
 	}
 	
 	public void heal(int value){
@@ -40,7 +43,7 @@ public abstract class Fighter implements Content {
 		return strength;
 	}
 	
-	public int getHealth(){
+	public int getHealth(){		
 		return health;
 	}
 	

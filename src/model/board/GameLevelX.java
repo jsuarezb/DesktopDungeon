@@ -59,14 +59,14 @@ public class GameLevelX extends Board {
 
 	@Override
 	public boolean gameOver() {
-		// TODO Auto-generated method stub
+		// TODO Add the condition to check if there are enemies left
 		return !getHero().isAlive();
 	}
 
 	@Override
 	public boolean playerWon() {
 		// TODO Auto-generated method stub
-		return false;
+		return getHero().isAlive();
 	}
 	
 }
