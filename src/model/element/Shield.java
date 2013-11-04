@@ -13,6 +13,6 @@ public class Shield extends ValuableItem{
 	
 	@Override
 	public Content interact(Fighter hero){
-		return new ArmoredHero((Hero)hero);
+		return new ArmoredHero((Hero) hero);
 	}
 }

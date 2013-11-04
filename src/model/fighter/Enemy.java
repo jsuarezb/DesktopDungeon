@@ -1,6 +1,7 @@
 package model.fighter;
 
 import model.board.Content;
+import model.element.Blood;
 
 public abstract class Enemy extends Fighter {
 	
@@ -21,13 +22,16 @@ public abstract class Enemy extends Fighter {
 	@Override
 	public Content interact(Fighter hero) {
 		hero.injured(getMaxStrength());
+		
 		if( hero.isAlive() ){
 			hero.interact(this);
-			if ( !this.isAlive() ){
-				((Hero)hero).addExperience(getLevel()); 
+			
+			if (!this.isAlive()){
+				((Hero) hero).addExperience(getLevel()); 
 				return drop();
 			}
 		}
+		
 		return this; //GAME OVER
 	}
 	

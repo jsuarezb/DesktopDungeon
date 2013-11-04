@@ -1,6 +1,7 @@
 package model.fighter;
 
 import model.board.Content;
+import model.element.Blood;
 
 public class Hero extends Fighter {
 
@@ -47,7 +48,7 @@ public class Hero extends Fighter {
         
         @Override
         public Content interact(Fighter enemy) {
-                enemy.injured( getStrength());
+                enemy.injured(getStrength());
                 return null;
         }
         
