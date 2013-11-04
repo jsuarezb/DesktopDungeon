@@ -65,7 +65,6 @@ public class GameLevelX extends Board {
 
 	@Override
 	public boolean playerWon() {
-		// TODO Auto-generated method stub
 		return getHero().isAlive();
 	}
 	

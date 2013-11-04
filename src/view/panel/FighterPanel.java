@@ -36,6 +36,10 @@ public class FighterPanel extends JPanel {
 	}
 	
 	public void refreshData() {
+		if (!fighter.isAlive()){
+			this.setVisible(false);
+		}
+		
 		healthBar.setMaximum(fighter.getMaxHealth());
 		healthBar.setValue(fighter.getHealth());
 		healthBar.setString(fighter.getHealth() + "/" + fighter.getMaxHealth());
