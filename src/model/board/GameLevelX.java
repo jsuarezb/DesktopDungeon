@@ -40,8 +40,6 @@ public class GameLevelX extends Board {
 		g[11][4].setContent(new Goblin(3));
 		g[11][9].setContent(new Goblin(3));
 		g[5][8].setContent(new Goblin(4));
-		g[0][11].setContent(new Golem(10));
-		g[11][9].setContent(new Golem(5));
 		g[1][3].setContent(new Snake(1));
 		g[8][1].setContent(new Snake(3));
 		
@@ -55,17 +53,6 @@ public class GameLevelX extends Board {
 	@Override
 	protected Point getHeroInitPosition() {
 		return new Point(1, 1);
-	}
-
-	@Override
-	public boolean gameOver() {
-		// TODO Add the condition to check if there are enemies left
-		return !getHero().isAlive();
-	}
-
-	@Override
-	public boolean playerWon() {
-		return getHero().isAlive();
 	}
 	
 }

@@ -2,6 +2,7 @@ package model.board;
 
 import java.awt.Point;
 
+import model.fighter.Enemy;
 import model.fighter.Hero;
 
 public abstract class Board {
@@ -79,7 +80,20 @@ public abstract class Board {
 
 	protected abstract Point getHeroInitPosition();
 	
-	public abstract boolean gameOver();
+	public boolean gameOver() {
+		if (getHero().isAlive()){
+			for (Cell[] row : g){
+				for (Cell cell : row){
+					if (cell.getContent() instanceof Enemy)
+						return false;
+				}
+			}
+		}
+		
+		return true;
+	}
 	
-	public abstract boolean playerWon();
+	public boolean playerWon() {
+		return getHero().isAlive();
+	}
 }
