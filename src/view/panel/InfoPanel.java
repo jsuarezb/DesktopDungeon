@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import model.Game;
 import model.board.Content;
+import model.element.Item;
 import model.fighter.Fighter;
 import view.ImageManager;
 
