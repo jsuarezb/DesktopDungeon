@@ -5,14 +5,27 @@
 │   │   │   ├── Board.class
 │   │   │   ├── Cell.class
 │   │   │   ├── Content.class
+│   │   │   ├── GameLevelX.class
 │   │   │   └── Move.class
 │   │   ├── element
-│   │   │   └── Valuable.class
+│   │   │   ├── Blood.class
+│   │   │   ├── HealthBonus.class
+│   │   │   ├── Item.class
+│   │   │   ├── Potion.class
+│   │   │   ├── Shield.class
+│   │   │   ├── StrengthBonus.class
+│   │   │   ├── Sword.class
+│   │   │   ├── Valuable.class
+│   │   │   ├── ValuableItem.class
+│   │   │   └── Wall.class
 │   │   ├── fighter
+│   │   │   ├── ArmoredHero.class
+│   │   │   ├── Enemy.class
 │   │   │   ├── Fighter.class
+│   │   │   ├── Goblin.class
+│   │   │   ├── Golem.class
 │   │   │   ├── Hero.class
-│   │   │   └── level
-│   │   │       └── Level.class
+│   │   │   └── Snake.class
 │   │   └── Game.class
 │   └── view
 │       ├── ImageManager.class
@@ -28,6 +41,7 @@
 │           ├── GamePanelListener.class
 │           ├── HeroPanel.class
 │           └── InfoPanel.class
+├── Enunciado.pdf
 ├── README.md
 ├── resources
 │   ├── armor.png
@@ -50,14 +64,27 @@
 │   │   │   ├── Board.java
 │   │   │   ├── Cell.java
 │   │   │   ├── Content.java
+│   │   │   ├── GameLevelX.java
 │   │   │   └── Move.java
 │   │   ├── element
-│   │   │   └── Valuable.java
+│   │   │   ├── Blood.java
+│   │   │   ├── HealthBonus.java
+│   │   │   ├── Item.java
+│   │   │   ├── Potion.java
+│   │   │   ├── Shield.java
+│   │   │   ├── StrengthBonus.java
+│   │   │   ├── Sword.java
+│   │   │   ├── ValuableItem.java
+│   │   │   ├── Valuable.java
+│   │   │   └── Wall.java
 │   │   ├── fighter
+│   │   │   ├── ArmoredHero.java
+│   │   │   ├── Enemy.java
 │   │   │   ├── Fighter.java
+│   │   │   ├── Goblin.java
+│   │   │   ├── Golem.java
 │   │   │   ├── Hero.java
-│   │   │   └── level
-│   │   │       └── Level.java
+│   │   │   └── Snake.java
 │   │   └── Game.java
 │   └── view
 │       ├── ImageManager.java
@@ -73,4 +100,4 @@
 │           └── InfoPanel.java
 └── Tree.info
 
-17 directories, 56 files
+15 directories, 85 files
