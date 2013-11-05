@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import model.Game;
+import model.board.Cell;
 import model.board.Content;
 import model.element.Item;
 import model.fighter.Fighter;
@@ -59,12 +60,14 @@ public class InfoPanel extends JPanel implements GamePanelListener {
 	
 	@Override
 	public void onMouseOver(int row, int column) {
-		Content content = game.get(row, column).getContent();
-		if (content != null && content instanceof Fighter) {
+		Cell cell = game.get(row, column);
+		Content content = cell.getContent();
+		
+		if (content != null && content instanceof Fighter && !cell.hasFog()) {
 			enemyPanel.setVisible(true);
 			enemyPanel.setFighter((Fighter)content);
 			elementPanel.setVisible(false);
-		} else if (content != null && content instanceof Item ) {
+		} else if (content != null && content instanceof Item && !cell.hasFog()) {
 			enemyPanel.setVisible(false);
 			elementPanel.setContent(content);
 			elementPanel.setVisible(true);
