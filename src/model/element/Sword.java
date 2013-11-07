@@ -3,6 +3,7 @@ package model.element;
 import model.board.Content;
 import model.fighter.Fighter;
 import model.fighter.Hero;
+import model.fighter.SwordedHero;
 
 public class Sword extends ValuableItem{
 	
@@ -12,8 +13,7 @@ public class Sword extends ValuableItem{
 	
 	@Override
 	public Content interact(Fighter hero){
-		((Hero)hero).swordify(getValue());
-		
-		return hero;
+		Hero swordedHero = new SwordedHero(hero, this);
+		return swordedHero;
 	}
 }

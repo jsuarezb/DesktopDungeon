@@ -2,9 +2,8 @@ package model.element;
 
 import model.board.Content;
 import model.fighter.Fighter;
-import model.fighter.Hero;
 
-public class StrengthBonus extends ValuableItem{
+public class StrengthBonus extends ValuableItem{  
 	
 	public StrengthBonus(int value){
 		super(value);
@@ -12,7 +11,7 @@ public class StrengthBonus extends ValuableItem{
 	
 	@Override
 	public Content interact(Fighter hero){
-		((Hero)hero).stronger(getValue());
+		hero.stronger(getValue());
 		return hero;
 	}
 }

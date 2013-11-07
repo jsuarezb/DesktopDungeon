@@ -1,86 +1,98 @@
 package model.fighter;
 
 import model.board.Content;
-import model.element.Blood;
+import model.fighter.level.Level;
 
-public class Hero extends Fighter {
+public class Hero implements Fighter {
 
-        protected int sword;
-        protected int experience;
-        protected static final int MAXLEVEL = 10;
-        
-        public Hero(){
-                this(1);
-        }
-        
-        public Hero( int level ){
-             initialize( level );
-        }
-        
-        public void addExperience(int value) {
-                experience += value;
-                if( getExperience() >= getMaxExperience() && !hasMaxLevel() ){
-                        levelUp();
-                        experience = 0;
-                        strength = getMaxStrength() + sword;
-                        this.healFull();
-                }
-        }
-        
-        @Override
-        public boolean canWalkOver() {
-                return true;
-        }
-
-
-        public int getExperience() {
-                return experience;
-        }
-        
-        @Override
-        public int getLevel() {
-                return level;
-        }
-
-        public int getMaxExperience() {
-                return getLevel()*5;
-        }
-        
-        @Override
-        public Content interact(Fighter enemy) {
-                enemy.injured(getStrength());
-                return null;
-        }
-        
-        public boolean hasMaxLevel(){
-                return getLevel() == getMaxLevel();
-        }
-        
-        private int getMaxLevel() {
-                return MAXLEVEL;
-        }
-        
-        private void levelUp() {
-                level++;
-        }
-
-        public int getMaxHealth(){
-                return getLevel()*10;
-        }
-        
-        @Override
-        public int getMaxStrength() {
-                return 5*getLevel();
-        }
-        
-        public void stronger(int value){
-                strength += value;
-        }
-        
-        public void swordify(int value){
-                strength -= sword;
-                sword = value;
-                strength += value;
-        }
-        
+	protected Fighter fighter;
+	
+	public Hero(Fighter fighter){
+		this.fighter = fighter;
+	}
+	
+	protected Fighter getFighter(){
+		return fighter;
+	}
+	
+	@Override
+	public void addExperience(int value){
+		fighter.addExperience(value);
+	}
+	
+	@Override
+	public boolean canWalkOver() {
+		return fighter.canWalkOver();
+	}
+	
+	@Override
+	public int getExperience() {
+		return fighter.getExperience();
+	}
+	
+	@Override
+	public int getHealth() {
+		return fighter.getHealth();
+	}
+	
+	@Override
+	public Level getLevel() {
+		return fighter.getLevel();
+	}
+	
+	@Override
+	public int getMaxExperience() {
+		return fighter.getMaxExperience();
+	}
+	
+	@Override
+	public int getMaxHealth() {
+		return fighter.getMaxHealth();
+	}
+	
+	@Override
+	public int getStrength() {
+		return fighter.getStrength();
+	}
+	
+	@Override
+	public boolean hasMaxLevel(){
+        return fighter.hasMaxLevel();
+	}
+	
+	@Override
+	public void heal(int value) {
+		fighter.heal(value);
+	}
+	
+	@Override
+	public void healFull() {
+		fighter.healFull();
+	}
+	
+	@Override
+	public void injured(int value) {
+		fighter.injured(value);
+	}
+	
+	@Override
+	public Content interact(Fighter enemy){
+		enemy.injured( getStrength() );
+		return this;
+	}
+	
+	@Override
+	public boolean isAlive() {
+		return fighter.isAlive();
+	}
+	
+	@Override
+	public void stronger(int value) {
+		fighter.stronger(value);
+	}	
+	
+	@Override
+	public int printStrength() {
+		return fighter.printStrength();
+	}
 }

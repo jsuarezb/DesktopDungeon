@@ -9,11 +9,11 @@ public class Golem extends Enemy{
         public final static double F = 1;
         
         public Golem( int level ){
-                super(S, F, level);
+                super(level, S, F);
         }
         
         @Override
         public Content drop() {
-                return new Sword(getLevel());
+                return new Sword(getLevel().getValue());
         }
 }

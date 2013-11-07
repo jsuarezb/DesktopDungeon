@@ -4,17 +4,14 @@ public class ArmoredHero extends Hero{
 	
 	private static final double SHIELD = 0.7;
 	
-	public ArmoredHero( Hero hero ){
-		this.health = hero.health;
-		this.strength = hero.strength;
-		this.level = hero.level;
-		this.sword = hero.sword; 
-		this.experience = hero.experience;
+	public ArmoredHero(Fighter hero){
+		super(hero);
 	}
 	
 	@Override
-	public void injured(int value){
-		health -= Math.round(value * SHIELD);
+	public void injured(int value) {
+		fighter.injured((int)(SHIELD*value));
 	}
+
 }
 

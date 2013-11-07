@@ -1,9 +1,13 @@
 package model.board;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
-import model.fighter.Enemy;
+import model.fighter.Fighter;
 import model.fighter.Hero;
+import model.fighter.HeroCharacter;
+import model.fighter.HeroMovedListener;
 
 public abstract class Board {
 	
@@ -11,12 +15,12 @@ public abstract class Board {
 	
 	protected Cell[][] g = new Cell[SIZE][SIZE];
 	private Point heroPosition;
+	private List<HeroMovedListener> listeners = new ArrayList<HeroMovedListener>();
 	
 	public Board() {
 		initialize();
 	}
 	
-
 	public void initialize() {
 		for (int x = 0; x < SIZE; x++) {
 			for (int y = 0; y < SIZE; y++) {
@@ -24,8 +28,9 @@ public abstract class Board {
 			}
 		}
 		setContents();
+		Fighter hero = new HeroCharacter(1);
 		heroPosition = getHeroInitPosition();
-		g[heroPosition.y][heroPosition.x].setContent(new Hero());
+		g[heroPosition.y][heroPosition.x].setContent(new Hero(hero));
 		cleanFog(heroPosition);
 	}	
 
@@ -39,6 +44,9 @@ public abstract class Board {
 					g[heroPosition.y][heroPosition.x].removeContent();
 					heroPosition = newPosition;
 					cleanFog(heroPosition);
+					for( HeroMovedListener listener : listeners ){
+						listener.heroMoved();
+					}
 				} else if (g[newPosition.y][newPosition.x].canInteract()) {
 					g[newPosition.y][newPosition.x].interact(getHero());
 				}
@@ -52,7 +60,7 @@ public abstract class Board {
 				if (i>=0 && i<SIZE && j>=0 && j<SIZE) {
 					if (g[i][j].hasFog()) {
 						g[i][j].removeFog();
-						getHero().heal(getHero().getLevel());
+						getHero().heal(getHero().getLevel().getValue());
 					}
 				}
 			}
@@ -80,20 +88,11 @@ public abstract class Board {
 
 	protected abstract Point getHeroInitPosition();
 	
-	public boolean gameOver() {
-		if (getHero().isAlive()){
-			for (Cell[] row : g){
-				for (Cell cell : row){
-					if (cell.getContent() instanceof Enemy)
-						return false;
-				}
-			}
-		}
-		
-		return true;
-	}
+	public abstract boolean gameOver();
 	
-	public boolean playerWon() {
-		return getHero().isAlive();
+	public abstract boolean playerWon();
+	
+	public void addHeroMovedListener( HeroMovedListener listener ){
+		listeners.add(listener);
 	}
 }

@@ -1,52 +1,28 @@
 package model.fighter;
 
 import model.board.Content;
-import model.element.Blood;
+import model.fighter.level.EnemyLevel;
 
-public abstract class Enemy extends Fighter {
+public abstract class Enemy extends Character {
 	
-	protected double F;
-	protected double S;
-	
-	public Enemy(double S, double F, int level){
-		this.F = F;
-		this.S = S;
-		initialize( level );	
+	public Enemy( int level, double S, double F ){
+		this.level = new EnemyLevel( level, level, S, F );
+		initialize();
 	}
 	
-	@Override
-	public boolean canWalkOver() {
-		return false;
-	}
-
 	@Override
 	public Content interact(Fighter hero) {
-		hero.injured(getMaxStrength());
-		
+		hero.injured( this.getStrength() );
 		if( hero.isAlive() ){
-			hero.interact(this);
+				hero.interact(this);
 			
 			if (!this.isAlive()){
-				((Hero) hero).addExperience(getLevel()); 
+				hero.addExperience(getLevel().getValue()); 
 				return drop();
 			}
 		}
-		
-		return this; //GAME OVER
+		return this;
 	}
 	
-	public boolean hasMaxLevel() {
-		return true;
-	}
-	
-	@Override
-	public int getMaxHealth() {
-		return (int) Math.floor((Math.pow((getLevel() + 3), 2) - 10)*S);
-	}
-	
-	public int getMaxStrength() {
-		return (int) Math.floor((Math.pow(getLevel(), 2) + 5*getLevel())*0.5*F);
-	}
-	
-	public abstract Content drop();	
+	public abstract Content drop();
 }

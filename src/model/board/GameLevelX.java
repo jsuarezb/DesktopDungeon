@@ -1,14 +1,15 @@
 package model.board;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
 import model.fighter.*;
 import model.element.*;
 
 public class GameLevelX extends Board {
-
-	public GameLevelX(){
-		
-	}
+	
+	private List<Enemy> enemies;
 
 	@Override
 	protected void setContents() {
@@ -33,15 +34,17 @@ public class GameLevelX extends Board {
 		g[5][11].setContent(new Wall());
 		g[6][11].setContent(new Wall());
 		
-		g[4][1].setContent(new Goblin(1));
-		g[3][5].setContent(new Goblin(1));
-		g[5][6].setContent(new Goblin(2));
-		g[7][3].setContent(new Goblin(2));
-		g[11][4].setContent(new Goblin(3));
-		g[11][9].setContent(new Goblin(3));
-		g[5][8].setContent(new Goblin(4));
+		g[4][1].setContent(new Goblin(1, this));
+		g[3][5].setContent(new Goblin(1, this));
+		g[5][6].setContent(new Goblin(2, this));
+		g[7][3].setContent(new Goblin(2, this));
+		g[11][4].setContent(new Goblin(3, this));
 		g[1][3].setContent(new Snake(1));
-		g[8][1].setContent(new Snake(3));
+		g[8][1].setContent(new Golem(2));
+		g[8][5].setContent(new Golem(2));
+		g[11][9].setContent(new Golem(3));
+		g[0][11].setContent(new Golem(4));
+		listEnemies();
 		
 		g[4][4].setContent(new Potion());
 		g[11][6].setContent(new HealthBonus(5));
@@ -50,9 +53,36 @@ public class GameLevelX extends Board {
 		g[7][11].setContent(new Shield(10));
 	}
 
+	private void listEnemies(){
+		enemies = new ArrayList<Enemy>();
+		for( Cell[] cellRow: g){
+			for( Cell cell: cellRow){
+				if( cell.getContent() instanceof Enemy ){
+					enemies.add((Enemy)cell.getContent());
+				}
+			}
+		}
+	}
+
 	@Override
 	protected Point getHeroInitPosition() {
 		return new Point(1, 1);
+	}
+
+	@Override
+	public boolean gameOver() {
+		if( !getHero().isAlive() )
+			return true;
+		for( Enemy enemy: enemies){
+			if( enemy.isAlive() )
+				return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean playerWon() {
+		return getHero().isAlive();
 	}
 	
 }

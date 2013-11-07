@@ -1,22 +1,30 @@
 package model.fighter;
 
+import model.board.Board;
 import model.board.Content;
 import model.element.Blood;
 
-/* TODO: FALTA LISTENER */
-
-public class Goblin extends Enemy{
+public class Goblin extends Enemy implements HeroMovedListener{
         
-        public final static double S = 1;
-        public final static double F = 0.7;
+        private final static double S = 1;
+        private final static double F = 0.7;
+        private final static int HEAL = 1;
+        private int steps;
         
-        public Goblin( int level ){
-                super(S, F, level);
+        public Goblin( int level, Board board ){
+        	super( level, S, F );
+        	board.addHeroMovedListener(this);
         }
         
         @Override
         public Content drop() {
                 return new Blood();
+        }
+        
+        public void heroMoved(){
+        	if( steps % 2 == 0 && isAlive() )
+        		this.heal(HEAL);
+        	steps++;
         }
 
 }

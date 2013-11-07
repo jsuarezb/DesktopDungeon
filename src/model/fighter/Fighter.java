@@ -1,60 +1,35 @@
 package model.fighter;
 
 import model.board.Content;
+import model.fighter.level.Level;
 
-public abstract class Fighter implements Content {
-	
-	protected int health;
-	protected int strength;
-	protected int level;
+public interface Fighter extends Content {
 
-	public Fighter(){
-	}
+	public boolean isAlive();
 	
-	public void initialize( int level ){
-		this.level = level;
-		health = getMaxHealth();
-		strength = getMaxStrength();
-	}
+	public void injured(int value);
 	
-	public boolean isAlive(){
-		return health > 0;
-	}
+	public void heal(int value);
 	
-	public void injured(int value){
-		health -= value;
-		
-		if (health < 0) // Don't want negative health
-			health = 0;
-	}
-	
-	public void heal(int value){
-		health += value;
-		if( health >= getMaxHealth() ){
-			health = getMaxHealth();
-		}
-	}
-	
-	public void healFull(){
-		health = getMaxHealth();
-	}
+	public void healFull();
 
-	public int getStrength(){
-		return strength;
-	}
+	public int getStrength();
 	
-	public int getHealth(){		
-		return health;
-	}
+	public void stronger(int value);
 	
-	public int getLevel(){
-		return level;
-	}
+	public int getHealth();
 	
-	public abstract boolean hasMaxLevel();
+	public int getMaxHealth();
 	
-	public abstract int getMaxHealth();
+	public Level getLevel();
 	
-	public abstract int getMaxStrength();
+	public boolean hasMaxLevel();
 	
+	public void addExperience(int value) ;
+	
+	public int getExperience();
+	
+	public int getMaxExperience();
+	
+	public int printStrength();
 }

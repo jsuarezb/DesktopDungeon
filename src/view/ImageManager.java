@@ -21,6 +21,7 @@ import model.fighter.Goblin;
 import model.fighter.Golem;
 import model.fighter.Hero;
 import model.fighter.Snake;
+import model.fighter.SwordedHero;
 
 public class ImageManager {
 	
@@ -30,10 +31,11 @@ public class ImageManager {
 		initImages();
 	}
 
-	public void initImages() {
+	public void initImages() { 
 		try{
 			images.put(Hero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
 			images.put(ArmoredHero.class.getName(), ImageUtils.loadImage("resources/heroArmor.png"));
+			images.put(SwordedHero.class.getName(), ImageUtils.loadImage("resources/heroBase.png"));
 			images.put(Cell.class.getName(), ImageUtils.loadImage("resources/floor.png"));
 			images.put(Blood.class.getName(), ImageUtils.loadImage("resources/blood.png"));
 			images.put(Shield.class.getName(), ImageUtils.loadImage("resources/armor.png"));
@@ -60,7 +62,7 @@ public class ImageManager {
 				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(fighter.getClass().getName()));
 				
 				Color color;
-				switch( fighter.getLevel() ){
+				switch( fighter.getLevel().getValue() ){
 				case 1:
 					color = new Color( 0, 255, 0 );
 					break;
@@ -95,7 +97,7 @@ public class ImageManager {
 					color = new Color( 0, 255, 0 );
 				}
 				
-				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel()), color);
+				return ImageUtils.drawString(image, String.valueOf(fighter.getLevel().getValue()), color);
 			} else if ( content instanceof Valuable ){
 				Valuable valuableItem = (Valuable) content;
 				Image image = ImageUtils.overlap(images.get(cell.getClass().getName()), images.get(valuableItem.getClass().getName()));

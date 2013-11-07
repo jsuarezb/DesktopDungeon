@@ -9,7 +9,7 @@ public class Snake extends Enemy{
         public final static double F = 1;
         
         public Snake(int level){
-                super(S, F, level);
+                super(level, S, F);
         }
         
         @Override
